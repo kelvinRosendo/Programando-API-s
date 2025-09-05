@@ -15,6 +15,7 @@ const rotas = {
     '/': 'Curso de Node',
     '/livros': 'Você está na página de livros',
     '/autores': 'Listagem de autores',
+    '/sobre': 'Informações sobre o projeto Node '
 }
 
 // Cria o servidor HTTP
@@ -41,3 +42,5 @@ server.listen(port, () => {
     console.log(`Server escutando em http://localhost:${port}`)
 })
  
+
+/*instalei a biblioteca do Nodemon 05/09/2025 para que o site/server se atualize em tempo real, conforme as minhas alterações */
