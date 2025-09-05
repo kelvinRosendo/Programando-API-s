@@ -9,6 +9,13 @@ const http = require("http")
 // Aqui estamos usando a porta 3009
 const port = 3009;
 
+// Define algumas rotas simples para o servidor
+// Cada rota é uma chave no objeto 'rotas' e o valor é a mensagem que será retornada e estas mensagens são apenas textos simples mas podem ser HTML ou JSON      
+const rotas = {
+    '/': 'Curso de Node',
+    '/livros': 'Você está na página de livros',
+    '/autores': 'Listagem de autores',
+}
 
 // Cria o servidor HTTP
 // A função createServer recebe uma função de callback (req, res) que será executada
@@ -19,8 +26,10 @@ const server = http.createServer((req, res ) => {
     // e o tipo de conteúdo que será retornado ('text/plain' = texto simples)
     res.writeHead(200, {'content-Type': 'text/plain'});
     
-    //Envia a resposta final para o cliante e encerra a conexão
-    res.end('Estamos Rodando!!!')
+    // Envia a resposta para o cliente
+    // Se a rota existir no objeto 'rotas', retorna a mensagem correspondente
+    // Caso contrário (que é represetado pelas barras verticais duplas), retorna 'Página não encontrada'
+    res.end(rotas[req.url] || 'Página não encontrada')
 })
 
 
