@@ -2,8 +2,8 @@
   "name": "curso_alura_node",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +13,8 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
