@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 
-const livro = [ 
+const livros = [ 
     { id: 1, "titulo": 'O Senhor dos Anéis', "autor": 'J.R.R. Tolkien' },
     { id: 2, "titulo": '1984', "autor": 'George Orwell' },
     { id: 3, "titulo": 'Dom Casmurro', "autor": 'Machado de Assis' }
@@ -21,15 +21,22 @@ app.get('/', (req, res) => {
 });
 
 app.get('/livros', (req, res) => {
-    res.status(200).json(livro);
+    res.status(200).json(livros);
 });
+
+/* Implementando o endpoint GET para buscar um livro por ID */
+app.get('/livros/:id', (req, res) => { 
+    let index = buscarLivro(req.params.id);
+    res.json(livros[index]);
+});
+
 
 /* o .post é usado para criar novos recursos no servidor
  Implementando o endpoint POST para adicionar um novo livro
  O endpoint recebe os dados do livro no corpo da requisição (req.body)
  Adiciona o novo livro ao array 'livros' e retorna uma mensagem de sucesso*/
 app.post('/livros', (req, res) => {
-    livro.push(req.body);
+    livros.push(req.body);
     res.status(201).send('Livro adicionado com sucesso');
 });
 
@@ -43,11 +50,22 @@ app.put('/livros/:id', (req, res) => {
     res.json(livros);
 });
 
+app.delete('/livros/:id', (req, res) => { 
+    
+    // Extraindo o ID do livro dos parâmetros da URL 
+    let {id} = req.params;
+    let index = buscarLivro(id);
+    livros.splice(index, 1);
+    
+    // Enviando uma resposta de sucesso em relação a remoção do livro
+    res.send(`Livro com o ID ${id} removido com sucesso`);
+});
+
 /* Implementando o endpoint DELETE para remover um livro existente
  O endpoint recebe o ID do livro na URL
  Usamos o método findIndex para localizar o índice do livro no array e removemos o livro usando splice*/ 
 function buscarLivro(id) {
     return livros.findIndex(livro => livro.id == id);
 }
-export default app;
 
+export default app;
