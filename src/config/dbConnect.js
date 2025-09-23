@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 // ⚠️ Dica: nunca deixe usuário/senha expostos em código real, use variáveis de ambiente (.env)
 const usuario = "Kelvin";
 const senha = encodeURIComponent("Nivlek_8002"); // encodeURIComponent garante que caracteres especiais da senha não quebrem a URL
-const host = "delploy-node.spbe.g6.mongodb.net"; // host do cluster que o Mongo Atlas fornece
+const host = "delploy-node.spbe0g6.mongodb.net"; // host do cluster que o MongoAtlas fornece
 const dbName = "alura-node"; // nome do banco que você vai usar
 
 // Função que tenta se conectar ao MongoDB Atlas
