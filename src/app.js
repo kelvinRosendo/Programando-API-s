@@ -1,6 +1,7 @@
 // Importando os módulos necessários
 import express from 'express';
 import db from './config/dbConnect.js';
+import livros from './models/Livro.js';
 
 // Evento para verificar se a conexão com o banco de dados foi bem-sucedida
 db.on("error", console.log.bind(console, 'Erro de conexão'));
@@ -21,19 +22,23 @@ const app = express();
 app.use(express.json());
 
 
-const livros = [ 
+/*const livros = [ 
     { id: 1, "titulo": 'O Senhor dos Anéis', "autor": 'J.R.R. Tolkien' },
     { id: 2, "titulo": '1984', "autor": 'George Orwell' },
     { id: 3, "titulo": 'Dom Casmurro', "autor": 'Machado de Assis' }
 
-]
+]*/
 
 app.get('/', (req, res) => {
     res.status(200).send('Curso de Node com Express');
 });
 
 app.get('/livros', (req, res) => {
-    res.status(200).json(livros);
+
+    livros.find((err, livros) => {
+        res.status(200).json(livros);
+    })
+    
 });
 
 /* Implementando o endpoint GET para buscar um livro por ID */
