@@ -28,4 +28,5 @@ connectDB();
 
 // Exporta a conexão (caso precise acessar em outros arquivos)
 let db = mongoose.connection;
+
 export default db;
