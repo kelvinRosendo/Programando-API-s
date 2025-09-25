@@ -1,4 +1,4 @@
-// Livro.js
+// Livros.js
 // Modelo de dados para livros usando Mongoose e exporta o modelo para ser usado em outras partes da aplicação
 
 import mongoose  from "mongoose";
@@ -13,6 +13,6 @@ const livroSchema = new mongoose.Schema(
     }
 );
 
-const livros = mongoose.model("livros", livroSchema);
+const livros = mongoose.model("Livro", livroSchema, "Livros");
 
 export default livros;
