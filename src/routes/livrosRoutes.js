@@ -1,14 +1,14 @@
 import express from 'express';
-import LivroController from '../controllers/livroController';
+import livroController from '../controllers/livroController';
 
 const router = express.Router();
 
 router
-    .get("/livros", LivroController.listarLivros)
-    .get("/livros/:id", LivroController.listarLivrosPorId)
-    .post("/livros", LivroController.cadastrarLivro)
-    .put("/livros/:id", LivroController.atualizarLivro)
-    .delete("/livros/:id", LivroController.deletarLivro);
+    .get("/livros", livroController.listarLivros)
+    .get("/livros/:id", livroController.listarLivrosPorId)
+    .post("/livros", livroController.cadastrarLivro)
+    .put("/livros/:id", livroController.atualizarLivro)
+    .delete("/livros/:id", livroController.deletarLivro);
 
 export default router;
 /* Implementando o endpoint GET para listar todos os livros*/

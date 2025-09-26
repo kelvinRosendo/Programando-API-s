@@ -1,8 +1,7 @@
 import livro from "../models/Livro.js";
 
-class LivroController {
+class livroController {
 
-    
     /* 
 Endpoint GET para listar todos os livros
 ⚠️ Antes usávamos callback dentro de .find(), mas o Mongoose 7 não aceita mais callbacks
@@ -83,4 +82,4 @@ Usamos findByIdAndDelete() para localizar e remover diretamente no banco
     }
 }
 
-export default LivroController;
+export default livroController;
