@@ -82,4 +82,6 @@ Usamos findByIdAndDelete() para localizar e remover diretamente no banco
     }
 }
 
+
+import livroController from './LivroController.js'; 
 export default livroController;
