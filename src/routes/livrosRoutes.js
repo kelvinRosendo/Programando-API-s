@@ -5,7 +5,10 @@ const router = express.Router();
 
 router
     .get("/livros", LivroController.listarLivros)
-    .post("/livros", LivroController.cadastrarLivro);
+    .get("/livros/:id", LivroController.listarLivrosPorId)
+    .post("/livros", LivroController.cadastrarLivro)
+    .put("/livros/:id", LivroController.atualizarLivro)
+    .delete("/livros/:id", LivroController.deletarLivro);
 
 export default router;
 /* Implementando o endpoint GET para listar todos os livros*/
