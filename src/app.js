@@ -2,6 +2,7 @@
 import express from 'express';
 import db from './config/dbConnect.js';
 import livros from './models/Livro.js';
+import routes from './routes/index.js';
 
 // Evento para verificar se a conexão com o banco de dados foi bem-sucedida
 db.on("error", console.log.bind(console, 'Erro de conexão'));
@@ -17,27 +18,6 @@ const app = express();
 // Isso permite que possamos acessar req.body já como objeto JS
 app.use(express.json());
 
-/* 
-Rota inicial para testar se o servidor está rodando
-Quando acessamos http://localhost:3009/ no navegador, recebemos essa resposta
-*/
-app.get('/', (req, res) => {
-  res.status(200).send('Curso de Node com Express');
-});
-
-/* 
-Endpoint GET para listar todos os livros
-⚠️ Antes usávamos callback dentro de .find(), mas o Mongoose 7 não aceita mais callbacks
-Agora usamos async/await, que retorna uma Promise
-*/
-app.get('/livros', async (req, res) => {
-  try {
-    const listaLivros = await livros.find(); // Busca todos os livros no banco
-    res.status(200).json(listaLivros);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
 
 /* 
 Implementando o endpoint GET para buscar um livro por ID
