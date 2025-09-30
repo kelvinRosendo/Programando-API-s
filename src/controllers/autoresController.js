@@ -7,7 +7,7 @@ Endpoint GET para listar todos os autoress
 ⚠️ Antes usávamos callback dentro de .find(), mas o Mongoose 7 não aceita mais callbacks
 Agora usamos async/await, que retorna uma Promise
 */
-    static listarAutoress = (req, res) => {
+    static listarAutores = (req, res) => {
         autores.find((err, autores) => {
             res.status(200).json(autores);
         })
@@ -19,7 +19,7 @@ Antes: usávamos um array e a função buscarautores
 Agora: usamos mongoose.findById(), que já busca diretamente no banco
 
 */
-    static listarAutoressPorId = (req, res) => {
+    static listarAutoresPorId = (req, res) => {
         const id = req.params.id;
 
         autores.findById(id, (err, autores) => {
