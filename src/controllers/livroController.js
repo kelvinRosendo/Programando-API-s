@@ -24,7 +24,9 @@ Agora: usamos mongoose.findById(), que já busca diretamente no banco
     static listarLivrosPorId = (req, res) => {
         const id = req.params.id;
 
-        livro.findById(id, (err, livro) => {
+        livro.findById(id)
+          .populate('autor', 'nome') // Popula o campo 'autor' com os dados do autor referenciado
+          .exec((err, livro) => {
             if(err) {
                 res.status(400/*<- erro que aconteceu por conta do usuário*/).send({message: `${err.message} - Id do livro não localizado.`})
             } else {
