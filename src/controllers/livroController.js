@@ -8,7 +8,9 @@ Endpoint GET para listar todos os livros
 Agora usamos async/await, que retorna uma Promise
 */
     static listarLivros = (req, res) => {
-        livro.find((err, livros) => {
+        livro.find()
+        .populate('autor') // Popula o campo 'autor' com os dados do autor referenciado
+        .exec((err, livros) => {
             res.status(200).json(livros);
         })
     }
